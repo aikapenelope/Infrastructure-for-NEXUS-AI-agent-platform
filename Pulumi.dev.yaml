@@ -1,0 +1,4 @@
+config:
+  nexus-infra:location: hel1
+environment:
+  - nexus/secrets
