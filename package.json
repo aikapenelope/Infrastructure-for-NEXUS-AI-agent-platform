@@ -1,0 +1,19 @@
+{
+  "name": "nexus-infra",
+  "version": "1.0.0",
+  "description": "Infrastructure for NEXUS AI agent platform on Hetzner Cloud",
+  "main": "index.ts",
+  "scripts": {
+    "build": "tsc",
+    "lint": "npx tsc --noEmit"
+  },
+  "devDependencies": {
+    "@types/node": "^22.0.0",
+    "typescript": "^5.6.0"
+  },
+  "dependencies": {
+    "@pulumi/pulumi": "^3.0.0",
+    "@pulumi/hcloud": "^1.0.0",
+    "@pulumi/command": "^1.0.0"
+  }
+}
