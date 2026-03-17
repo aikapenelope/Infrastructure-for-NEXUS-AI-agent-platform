@@ -34,8 +34,7 @@ export const subnet = new hcloud.NetworkSubnet("nexus-subnet", {
 });
 
 // ---------------------------------------------------------------------------
-// Firewall: DEV mode - open for development access
-// TODO: Replace with Tailscale-only firewall before production
+// Firewall: Locked down — SSH only. Re-open app ports when needed.
 // ---------------------------------------------------------------------------
 
 export const serverFirewall = new hcloud.Firewall("fw-nexus-dev", {
@@ -46,42 +45,7 @@ export const serverFirewall = new hcloud.Firewall("fw-nexus-dev", {
             protocol: "tcp",
             port: "22",
             sourceIps: ["0.0.0.0/0", "::/0"],
-            description: "SSH (dev - will be locked down later)",
-        },
-        {
-            direction: "in",
-            protocol: "tcp",
-            port: "80",
-            sourceIps: ["0.0.0.0/0", "::/0"],
-            description: "HTTP",
-        },
-        {
-            direction: "in",
-            protocol: "tcp",
-            port: "443",
-            sourceIps: ["0.0.0.0/0", "::/0"],
-            description: "HTTPS",
-        },
-        {
-            direction: "in",
-            protocol: "tcp",
-            port: "8000",
-            sourceIps: ["0.0.0.0/0", "::/0"],
-            description: "NEXUS API (FastAPI)",
-        },
-        {
-            direction: "in",
-            protocol: "tcp",
-            port: "3000",
-            sourceIps: ["0.0.0.0/0", "::/0"],
-            description: "NEXUS Frontend (Next.js)",
-        },
-        {
-            direction: "in",
-            protocol: "tcp",
-            port: "5678",
-            sourceIps: ["0.0.0.0/0", "::/0"],
-            description: "n8n",
+            description: "SSH",
         },
         {
             direction: "in",
