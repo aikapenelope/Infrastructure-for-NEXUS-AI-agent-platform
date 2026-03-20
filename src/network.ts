@@ -74,14 +74,14 @@ export const serverFirewall = new hcloud.Firewall("fw-nexus-dev", {
             protocol: "tcp",
             port: "3000",
             sourceIps: ["0.0.0.0/0", "::/0"],
-            description: "NEXUS Frontend (Next.js)",
+            description: "NEXUS Frontend (Next.js dashboard)",
         },
         {
             direction: "in",
             protocol: "tcp",
-            port: "5678",
+            port: "6006",
             sourceIps: ["0.0.0.0/0", "::/0"],
-            description: "n8n",
+            description: "Phoenix AI Observability UI",
         },
         {
             direction: "in",
