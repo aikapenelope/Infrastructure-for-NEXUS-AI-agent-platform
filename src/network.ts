@@ -5,9 +5,9 @@ import * as hcloud from "@pulumi/hcloud";
  * Network module: Creates a private network, subnet, and firewall
  * for the NEXUS AI agent platform VPS.
  *
- * Firewall: SSH-only access. All app ports (3000, 6006, 8000, 8931)
- * are blocked at the Hetzner firewall level. Access services via SSH
- * tunnel or Tailscale when needed.
+ * DEV MODE: Firewall is open for development. SSH (22), HTTP (80),
+ * HTTPS (443), and app ports are publicly accessible.
+ * TODO: Lock down with Tailscale-only access before production.
  *
  * Network layout:
  *   10.1.0.0/16  - NEXUS network (separate from platform-infra 10.0.0.0/16)
@@ -34,7 +34,8 @@ export const subnet = new hcloud.NetworkSubnet("nexus-subnet", {
 });
 
 // ---------------------------------------------------------------------------
-// Firewall: SSH-only access. Services accessible via SSH tunnel.
+// Firewall: DEV mode - open for development access
+// TODO: Replace with Tailscale-only firewall before production
 // ---------------------------------------------------------------------------
 
 export const serverFirewall = new hcloud.Firewall("fw-nexus-dev", {
